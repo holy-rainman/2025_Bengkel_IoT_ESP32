@@ -9,6 +9,8 @@
 #define buzz 23
 #define rly1 13
 #define rly2 12
+#define pb1  14
+#define pb2  27
 
 #define LED1(x) digitalWrite(led1, x? HIGH:LOW)
 #define LED2(x) digitalWrite(led2, x? HIGH:LOW)
@@ -22,6 +24,9 @@
 #define RLY1(x) digitalWrite(rly1, x? LOW:HIGH)
 #define RLY2(x) digitalWrite(rly2, x? LOW:HIGH)
 
+#define PB1 digitalRead(pb1)
+#define PB2 digitalRead(pb2)
+
 void setup() 
 { pinMode(led1,OUTPUT); pinMode(led5,OUTPUT);
   pinMode(led2,OUTPUT); pinMode(led6,OUTPUT);
@@ -30,23 +35,14 @@ void setup()
   pinMode(buzz,OUTPUT);
 
   pinMode(rly1,OUTPUT); pinMode(rly2,OUTPUT);
-
-  pinMode(15,INPUT_PU)
+  pinMode(pb1,INPUT_PULLUP);
+  pinMode(pb2,INPUT_PULLDOWN);
+  Serial.begin(9600);
 }
 void loop() 
-{ LED1(1);  LED3(0);  delay(7000);
-  for(uint8_t i=0;i<3;i++)
-  { LED1(0);  delay(500);
-    LED1(1);  delay(500);
-  }
-
-  LED2(1); LED1(0); delay(3000);
-
-  LED3(1); LED2(0); delay(7000);
-  for(uint8_t i=0;i<3;i++)
-  { LED3(0);  delay(500);
-    LED3(1);  delay(500);
-  }
+{ Serial.print(PB1);
+  Serial.print(" ");
+  Serial.println(PB2);
 }
 
 void beep(uint8_t bil, uint16_t tempoh)
