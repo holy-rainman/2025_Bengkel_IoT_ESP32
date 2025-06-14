@@ -48,21 +48,25 @@ void loop()
     
     while(PB1==0);
     
-    if(cnt==1) LED1(1);
-    if(cnt==2) LED2(1);
-    if(cnt==3) LED3(1);
-    if(cnt==4) LED4(1);
-    if(cnt==5) LED5(1);
-    if(cnt==6) LED6(1);
-    if(cnt==7) LED7(1);
-    if(cnt==8) LED8(1);
-    if(cnt==9)
-    { cnt=0;
-      LED1(0);LED2(0);LED3(0);LED4(0);
-      LED5(0);LED6(0);LED7(0);LED8(0);
-    }
+    checkCnt();
     delay(200);
   }
+}
+void checkCnt()
+{ if(cnt==1) LED1(1);
+  if(cnt==2) LED2(1);
+  if(cnt==3) LED3(1);
+  if(cnt==4) LED4(1);
+  if(cnt==5) LED5(1);
+  if(cnt==6) LED6(1);
+  if(cnt==7) LED7(1);
+  if(cnt==8) LED8(1);
+  if(cnt==9)
+  { cnt=0;
+    LED1(0);LED2(0);LED3(0);LED4(0);
+    LED5(0);LED6(0);LED7(0);LED8(0);
+  }
+  return;
 }
 
 void beep(uint8_t bil, uint16_t tempoh)
