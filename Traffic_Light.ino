@@ -33,7 +33,7 @@ void setup()
 }
 void loop() 
 { LED1(1);  LED3(0);  delay(7000);
-  for(uint8_t i=0;i<3;i++)
+  for(uint8_t i=0;i<=3;i++)
   { LED1(0);  delay(500);
     LED1(1);  delay(500);
   }
@@ -41,7 +41,7 @@ void loop()
   LED2(1); LED1(0); delay(3000);
 
   LED3(1); LED2(0); delay(7000);
-  for(uint8_t i=0;i<3;i++)
+  for(uint8_t i=0;i<=3;i++)
   { LED3(0);  delay(500);
     LED3(1);  delay(500);
   }
