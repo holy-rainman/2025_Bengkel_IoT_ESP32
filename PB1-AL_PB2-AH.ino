@@ -40,8 +40,9 @@ void setup()
   Serial.begin(9600);
 }
 void loop() 
-{ Serial.print(PB1);
-  Serial.print(" ");
+{ Serial.print("PB1:");
+  Serial.print(PB1);
+  Serial.print(" PB2:");
   Serial.println(PB2);
 }
 
