@@ -63,6 +63,7 @@ void checkCnt()
   if(cnt==8) LED8(1);
   if(cnt==9)
   { cnt=0;
+    beep(2,50);
     LED1(0);LED2(0);LED3(0);LED4(0);
     LED5(0);LED6(0);LED7(0);LED8(0);
   }
