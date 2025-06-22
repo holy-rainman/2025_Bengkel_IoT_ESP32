@@ -8,10 +8,10 @@
 #define led8 19
 #define buzz 23
 #define rly1 13
-#define rly2 12
-#define pb1  14
-#define pb2  27
-#define irs  26
+#define rly2 14
+#define pb1  27
+#define pb2  26
+#define irs  25
 #define var  34
 
 #define LED1(x) digitalWrite(led1, x? HIGH:LOW)
