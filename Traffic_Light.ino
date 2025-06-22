@@ -8,7 +8,7 @@
 #define led8 19
 #define buzz 23
 #define rly1 13
-#define rly2 12
+#define rly2 14
 
 #define LED1(x) digitalWrite(led1, x? HIGH:LOW)
 #define LED2(x) digitalWrite(led2, x? HIGH:LOW)
