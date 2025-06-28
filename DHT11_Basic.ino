@@ -9,7 +9,7 @@ void triggerGetTemp();
 TaskHandle_t tempTaskHandle = NULL;
 Ticker tempTicker;
 bool tasksEnabled = false;
-int dhtPin = 27;
+int dhtPin = 33;
 
 bool initTemp() 
 { byte resultValue = 0;
