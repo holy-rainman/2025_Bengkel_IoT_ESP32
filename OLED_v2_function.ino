@@ -1,15 +1,3 @@
-#include <SPI.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-
-#define SCREEN_WIDTH 128 
-#define SCREEN_HEIGHT 64 
-
-#define OLED_RESET     -1 
-#define SCREEN_ADDRESS 0x3C 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
 #define led1 15
 #define led2 2
 #define led3 4
@@ -25,6 +13,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define pb2  26
 #define irs  25
 #define var  34
+#define ldr  35
 
 #define LED1(x) digitalWrite(led1, x? HIGH:LOW)
 #define LED2(x) digitalWrite(led2, x? HIGH:LOW)
@@ -42,6 +31,19 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define PB2 digitalRead(pb2)
 #define IRS digitalRead(irs)
 
+//============================== OLED
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH    128
+#define SCREEN_HEIGHT   64
+#define OLED_RESET      -1 
+#define SCREEN_ADDRESS  0x3C 
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+//============================== Variables
 uint8_t LEDs[]={15,2,4,16,17,5,18,19};
 
 void writeOLED(uint8_t x, uint8_t y,String text)
@@ -49,22 +51,20 @@ void writeOLED(uint8_t x, uint8_t y,String text)
   display.println(text);
   display.display();
 }
+
 void setup() 
-{ if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
-    Serial.println(F("SSD1306 allocation failed"));
-    for(;;); 
-  }
+{ Serial.begin(9600);
+  
+  display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);
   display.display();
   delay(2000);
-  display.clearDisplay();
+
   display.setTextSize(1);             
   display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0,0);             
-  display.println(F("Hello, world!"));
-  display.display();
 
-  delay(2000);
-  writeOLED(0,20,"RAHIM");
+  display.clearDisplay();
+  writeOLED(0,0,"Hello World!");
+  writeOLED(0,11,"Abd Rahim Kasiman");
   
   pinMode(led1,OUTPUT); pinMode(led5,OUTPUT);
   pinMode(led2,OUTPUT); pinMode(led6,OUTPUT);
@@ -76,16 +76,17 @@ void setup()
   pinMode(pb1,INPUT_PULLUP);
   pinMode(pb2,INPUT_PULLDOWN);
   pinMode(irs,INPUT);
-  Serial.begin(9600);
 }
+
 char tx2buf[100];
 uint8_t cnt=0;
 void loop() 
 { uint16_t an = analogRead(var);
   float volt = (float)an/4095*3.3;
   uint16_t anMAP=map(an,0,4095,0,8);
+  uint16_t LDR = analogRead(ldr);
 
-  sprintf(tx2buf,"ADC:%d, Volt:%.2f",an,volt);
+  sprintf(tx2buf,"ADC:%d, Volt:%.2f, LDR:%d",an,volt,LDR);
   Serial.println(tx2buf);
 
   for(uint8_t i=0; i<8; i++)
