@@ -57,8 +57,8 @@ void setup()
   display.setTextColor(SSD1306_WHITE);
 
   display.clearDisplay();
-  display.setCursor(0,0);   display.println(F("Hello, World!"));
-  display.setCursor(0,11);  display.println(F("Abd Rahim"));
+  display.setCursor(0,5);   display.println(F("Hello, World!"));
+  display.setCursor(0,16);  display.println(F("Abd Rahim"));
   display.display();
 
   pinMode(led1,OUTPUT); pinMode(led5,OUTPUT);
