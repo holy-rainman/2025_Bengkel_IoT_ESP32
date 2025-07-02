@@ -99,6 +99,10 @@ void setup()
   display.setTextSize(2);             
   display.setTextColor(SSD1306_WHITE);
   display.clearDisplay();
+
+  writeOLED(40,0,"DHT11");
+  writeOLED(25,30,"Init..."); 
+  delay(2000);
   
   pinMode(led1,OUTPUT); pinMode(led5,OUTPUT);
   pinMode(led2,OUTPUT); pinMode(led6,OUTPUT);
