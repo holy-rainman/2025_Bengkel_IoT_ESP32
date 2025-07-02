@@ -11,7 +11,7 @@ char pass[] = "123456abcd";
 
 BLYNK_WRITE(V0)
 { int led = param.asInt();
-  digitalWrite(15,!led);
+  digitalWrite(15,led);
 }
 
 void setup()
