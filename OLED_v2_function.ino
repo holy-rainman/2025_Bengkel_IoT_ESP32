@@ -63,8 +63,8 @@ void setup()
   display.setTextColor(SSD1306_WHITE);
 
   display.clearDisplay();
-  writeOLED(0,0,"Hello World!");
-  writeOLED(0,11,"Abd Rahim Kasiman");
+  writeOLED(0,5,"Hello World!");
+  writeOLED(0,16,"Abd Rahim Kasiman");
   
   pinMode(led1,OUTPUT); pinMode(led5,OUTPUT);
   pinMode(led2,OUTPUT); pinMode(led6,OUTPUT);
