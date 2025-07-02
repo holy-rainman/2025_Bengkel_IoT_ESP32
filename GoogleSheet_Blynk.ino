@@ -142,7 +142,7 @@ BLYNK_CONNECTED()
 }
 BLYNK_WRITE(V0)
 { int led = param.asInt();
-  digitalWrite(leds[0],!led);
+  digitalWrite(leds[0],led);
 }
 BLYNK_WRITE(V1)
 { int pwm = param.asInt();
