@@ -1,3 +1,37 @@
+#define led1 15
+#define led2 2
+#define led3 4
+#define led4 16
+#define led5 17
+#define led6 5
+#define led7 18
+#define led8 19
+#define buzz 23
+#define rly1 13
+#define rly2 14
+#define pb1  27
+#define pb2  26
+#define irs  25
+#define var  34
+#define ldr  35
+
+#define LED1(x) digitalWrite(led1, x? HIGH:LOW)
+#define LED2(x) digitalWrite(led2, x? HIGH:LOW)
+#define LED3(x) digitalWrite(led3, x? HIGH:LOW)
+#define LED4(x) digitalWrite(led4, x? HIGH:LOW)
+#define LED5(x) digitalWrite(led5, x? HIGH:LOW)
+#define LED6(x) digitalWrite(led6, x? HIGH:LOW)
+#define LED7(x) digitalWrite(led7, x? HIGH:LOW)
+#define LED8(x) digitalWrite(led8, x? HIGH:LOW)
+
+#define RLY1(x) digitalWrite(rly1, x? LOW:HIGH)
+#define RLY2(x) digitalWrite(rly2, x? LOW:HIGH)
+
+#define PB1 digitalRead(pb1)
+#define PB2 digitalRead(pb2)
+#define IRS digitalRead(irs)
+
+//============================== BLYNK
 #define BLYNK_PRINT Serial
 #define BLYNK_TEMPLATE_ID "TMPL6GcQTz0fp"
 #define BLYNK_TEMPLATE_NAME "Latihan IoT"
@@ -22,18 +56,9 @@ BlynkTimer timer;
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //============================== DHT11
-#include "DHTesp.h" 
-#include <Ticker.h>
-DHTesp dht;
-
-void tempTask(void *pvParameters);
-bool getTemperature();
-void triggerGetTemp();
-
-TaskHandle_t tempTaskHandle = NULL;
-Ticker tempTicker;
-bool tasksEnabled = false;
-int dhtPin = 33;
+#include <dhtESP32-rmt.h>
+float temperature = 0.0;
+float humidity = 0.0;
 
 //============================== Blynk
 char ssid[] = "UTHM_IoT";
@@ -41,68 +66,37 @@ char pass[] = "123456abcd";
 
 uint8_t leds[]={15,2,4,16,17,5,18,19};
 
+//============================== Variables
+uint8_t LEDs[]={15,2,4,16,17,5,18,19};
+
+//============================== DHT11 functions
+char dht11DataOLED[100], dht11DataT[100], dht11DataH[100];;
+void getDHT11()
+{ uint8_t error=read_dht(temperature, humidity, 33, DHT11);
+	if(error)
+		Serial.println(error);
+	else
+	{ Serial.print("Suhu: ");
+		Serial.print(temperature);
+		Serial.print(", Kelembapan:");
+		Serial.println(humidity);
+
+    sprintf(dht11DataT,"T:%.2f C",temperature);
+    sprintf(dht11DataH,"H:%.2f %%",humidity);
+  
+    display.clearDisplay();
+    writeOLED(40,0,"DHT11");
+    writeOLED(10,25,dht11DataT); 
+    writeOLED(10,42,dht11DataH); 
+
+    Blynk.virtualWrite(V3,temperature);
+    Blynk.virtualWrite(V4,humidity);
+	}
+}
 void writeOLED(uint8_t x, uint8_t y,String text)
 { display.setCursor(x,y);             
   display.println(text);
   display.display();
-}
-//============================== DHT11 functions
-bool initTemp() 
-{ byte resultValue = 0;
- 	dht.setup(dhtPin, DHTesp::DHT11);
-	Serial.println("DHT initiated");
-
- 	xTaskCreatePinnedToCore
-  (	tempTask,                       /* Function to implement the task */
-    "tempTask ",                    /* Name of the task */
-    4000,                           /* Stack size in words */
-    NULL,                           /* Task input parameter */
-    5,                              /* Priority of the task */
-    &tempTaskHandle,                /* Task handle. */
-    1                               /* Core where the task should run */
-  );
-  if (tempTaskHandle == NULL) 
-  { Serial.println("Failed to start task for temperature update");
-    return false;
-  } 
-  else 
-    tempTicker.attach(20, triggerGetTemp);
-  return true;
-}
-void triggerGetTemp() 
-{ if (tempTaskHandle != NULL) 
-    xTaskResumeFromISR(tempTaskHandle);
-}
-void tempTask(void *pvParameters) 
-{ Serial.println("tempTask loop started");
-	while (1) 
-  { if (tasksEnabled) 
-      getTemperature();
-		vTaskSuspend(NULL);
-	}
-}
-
-float suhu, kelembapan;
-char dht11Data[100], dht11DataOLED[100], dht11DataT[100], dht11DataH[100];
-bool getTemperature() 
-{ TempAndHumidity newValues = dht.getTempAndHumidity();
-  suhu = newValues.temperature;
-  kelembapan = newValues.humidity;
-
-  Blynk.virtualWrite(V3,suhu);
-  Blynk.virtualWrite(V4,kelembapan);
-
-  sprintf(dht11DataT,"T:%.2f C",suhu);
-  sprintf(dht11DataH,"H:%.2f %%",kelembapan);
-
-  display.clearDisplay();
-  writeOLED(40,0,"DHT11");
-  writeOLED(10,25,dht11DataT); 
-  writeOLED(10,42,dht11DataH); 
-
-  sprintf(dht11Data,"Suhu: %.2f, Kelembapan: %.2f",suhu,kelembapan);
-  Serial.println(dht11Data);
-	return true;
 }
 
 BLYNK_CONNECTED()
@@ -134,15 +128,6 @@ void getADC()
   adc=map(avg,0,4095,1,10);
   Blynk.virtualWrite(V2,adc);
 }
-void getDHT()
-{ if(!tasksEnabled) 
-  { delay(100);
-    tasksEnabled = true;
-    if(tempTaskHandle != NULL) 
-			vTaskResume(tempTaskHandle);
-  }
-  yield();
-}
 
 void setup()
 { display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);
@@ -153,12 +138,9 @@ void setup()
   display.setTextColor(SSD1306_WHITE);
   display.clearDisplay();
 
-  initTemp();
-  tasksEnabled = true;
-
   writeOLED(40,0,"DHT11");
-  writeOLED(20,30,"Init....");
-
+  writeOLED(25,30,"Init..."); 
+  delay(2000);
   
   for(uint8_t i=0;i<8;i++)
   { pinMode(leds[i],OUTPUT);
@@ -169,13 +151,10 @@ void setup()
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
   timer.setInterval(200,kelip);
   timer.setInterval(10,getADC);
-  timer.setInterval(1000,getDHT);
+  timer.setInterval(3000,getDHT11);
 }
 
 void loop()
 { Blynk.run();
   timer.run();
 }
-
-// char ssid[] = "UTHM_IoT";
-// char pass[] = "123456abcd";
