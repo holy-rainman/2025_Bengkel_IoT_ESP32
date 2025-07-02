@@ -44,18 +44,9 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //============================== DHT11
-#include "DHTesp.h" 
-#include <Ticker.h>
-DHTesp dht;
-
-void tempTask(void *pvParameters);
-bool getTemperature();
-void triggerGetTemp();
-
-TaskHandle_t tempTaskHandle = NULL;
-Ticker tempTicker;
-bool tasksEnabled = false;
-int dhtPin = 33;
+#include <dhtESP32-rmt.h>
+float temperature = 0.0;
+float humidity = 0.0;
 
 //============================== Variables
 uint8_t LEDs[]={15,2,4,16,17,5,18,19};
@@ -75,56 +66,23 @@ uint16_t smoothingAnalogValue(uint8_t pin, uint8_t samples = 10)
 }
 
 //============================== DHT11 functions
-bool initTemp() 
-{ byte resultValue = 0;
- 	dht.setup(dhtPin, DHTesp::DHT11);
-	Serial.println("DHT initiated");
+char dht11DataOLED[100];
+void getDHT11()
+{ uint8_t error=read_dht(temperature, humidity, 33, DHT11);
+	if(error)
+		Serial.println(error);
+	else
+	{ Serial.print("Suhu: ");
+		Serial.print(temperature);
+		Serial.print(", Kelembapan:");
+		Serial.println(humidity);
 
- 	xTaskCreatePinnedToCore
-  (	tempTask,                       /* Function to implement the task */
-    "tempTask ",                    /* Name of the task */
-    4000,                           /* Stack size in words */
-    NULL,                           /* Task input parameter */
-    5,                              /* Priority of the task */
-    &tempTaskHandle,                /* Task handle. */
-    1                               /* Core where the task should run */
-  );
-  if (tempTaskHandle == NULL) 
-  { Serial.println("Failed to start task for temperature update");
-    return false;
-  } 
-  else 
-    tempTicker.attach(20, triggerGetTemp);
-  return true;
-}
-void triggerGetTemp() 
-{ if (tempTaskHandle != NULL) 
-    xTaskResumeFromISR(tempTaskHandle);
-}
-void tempTask(void *pvParameters) 
-{ Serial.println("tempTask loop started");
-	while (1) 
-  { if (tasksEnabled) 
-      getTemperature();
-		vTaskSuspend(NULL);
+    sprintf(dht11DataOLED,"\rT:%.2fC, H:%.0f%%",temperature,humidity);
+    display.clearDisplay();
+    writeOLED(50,5,"DHT11");
+    writeOLED(20,20,dht11DataOLED);
 	}
-}
-
-float suhu, kelembapan;
-char dht11Data[100], dht11DataOLED[100];
-bool getTemperature() 
-{ TempAndHumidity newValues = dht.getTempAndHumidity();
-  suhu = newValues.temperature;
-  kelembapan = newValues.humidity;
-
-  sprintf(dht11DataOLED,"\rT:%.2fC, H:%.0f%%",suhu,kelembapan);
-  display.clearDisplay();
-  writeOLED(50,0,"DHT11");
-  writeOLED(20,15,dht11DataOLED);
-
-  sprintf(dht11Data,"Suhu: %.2f, Kelembapan: %.2f",suhu,kelembapan);
-  Serial.println(dht11Data);
-	return true;
+	delay(3000);	
 }
 
 //=============================================
@@ -149,9 +107,6 @@ void setup()
   pinMode(pb1,INPUT_PULLUP);
   pinMode(pb2,INPUT_PULLDOWN);
   pinMode(irs,INPUT);
-
-  initTemp();
-  tasksEnabled = true;
 }
 
 char tx2buf[100];
@@ -168,13 +123,7 @@ void loop()
   for(uint8_t i=0; i<8; i++)
     digitalWrite(LEDs[i], i<anMAP? HIGH:LOW);
 
-  if(!tasksEnabled) 
-  { delay(500);
-    tasksEnabled = true;
-    if(tempTaskHandle != NULL) 
-			vTaskResume(tempTaskHandle);
-  }
-  yield();
+  getDHT11();  
 }
 void checkCnt()
 { if(cnt==1) LED1(1);
