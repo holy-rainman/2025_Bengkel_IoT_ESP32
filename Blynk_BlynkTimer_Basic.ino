@@ -34,7 +34,7 @@ void kelip()
 void setup()
 { for(uint8_t i=0;i<8;i++)
   { pinMode(leds[i],OUTPUT);
-    digitalWrite(leds[i],HIGH);
+    digitalWrite(leds[i],LOW);
   }
 
   Serial.begin(9600);
