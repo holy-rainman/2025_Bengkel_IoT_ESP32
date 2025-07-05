@@ -5,13 +5,9 @@ PubSubClient client(espClient);
 
 #define LEDpin1      15                        
 
-const char* ssid = "JHChua@unifi";                   
-const char* password = "adamdanial123";         
+const char* ssid = "YOUR_SSID";                   
+const char* password = "YOUR_PASSWORD";         
 const char* mqtt_server = "broker.emqx.io";
-
-// const char* ssid = "YOUR_SSID";                   
-// const char* password = "YOUR_PASSWORD";         
-
 
 //=========================================== WiFi & MQTT SETUP BEGIN ===========================================
 char tx2buf[100];
