@@ -318,10 +318,11 @@
         "topic": "/LedControl",
         "topicType": "msg",
         "x": 720,
-        "y": 340,
+        "y": 320,
         "wires": [
             [
-                "e8c6238dc13309c3"
+                "e8c6238dc13309c3",
+                "66290c2e41e5c81b"
             ]
         ]
     },
@@ -330,7 +331,7 @@
         "type": "function",
         "z": "4e3d1b6f6afd87a1",
         "name": "All OFF",
-        "func": "let messages = [];\n\nfor (let i = 1; i <= 8; i++) {\n    messages.push({ topic: \"/LedControl\", payload: \"led\" + i + \"_0\" });\n    messages.push({ topic: \"/SliderControl\", payload: \"0\" });\n}\n\nreturn [messages];",
+        "func": "let messages = [];\n\nfor (let i = 1; i <= 8; i++) {\n    messages.push({ topic: \"/LedControl\", payload: \"led\" + i + \"_0\" });\n}\n\nreturn [messages];",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -338,7 +339,7 @@
         "finalize": "",
         "libs": [],
         "x": 880,
-        "y": 340,
+        "y": 320,
         "wires": [
             [
                 "aff04777c6cf4968"
@@ -370,8 +371,7 @@
                 "f20333d8cec62528",
                 "4efee83e3e6b62d8",
                 "3dac7b231ed0ab9e",
-                "0b7d90e433a10f24",
-                "ae7ed675c712cbba"
+                "0b7d90e433a10f24"
             ]
         ]
     },
@@ -480,10 +480,11 @@
         "topic": "/LedControl",
         "topicType": "msg",
         "x": 710,
-        "y": 300,
+        "y": 240,
         "wires": [
             [
-                "6585ec2a25ed2aef"
+                "6585ec2a25ed2aef",
+                "f4c96a2cc37aacd7"
             ]
         ]
     },
@@ -492,7 +493,7 @@
         "type": "function",
         "z": "4e3d1b6f6afd87a1",
         "name": "All ON",
-        "func": "let messages = [];\n\nfor (let i = 1; i <= 8; i++) {\n    messages.push({ topic: \"/LedControl\", payload: \"led\" + i + \"_1\" });\n    messages.push({ topic: \"/SliderControl\", payload: \"8\" });\n}\n\nreturn [messages];",
+        "func": "let messages = [];\n\nfor (let i = 1; i <= 8; i++) {\n    messages.push({ topic: \"/LedControl\", payload: \"led\" + i + \"_1\" });\n}\n\nreturn [messages];",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -500,7 +501,7 @@
         "finalize": "",
         "libs": [],
         "x": 870,
-        "y": 300,
+        "y": 240,
         "wires": [
             [
                 "aff04777c6cf4968"
@@ -531,7 +532,7 @@
         "wires": [
             [
                 "b29e97f97f7ac859",
-                "ae7ed675c712cbba"
+                "fdc2d542f9288f4a"
             ]
         ]
     },
@@ -570,9 +571,81 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 730,
+        "x": 1070,
         "y": 1120,
         "wires": []
+    },
+    {
+        "id": "66290c2e41e5c81b",
+        "type": "function",
+        "z": "4e3d1b6f6afd87a1",
+        "name": "Reset Slider",
+        "func": "let messages = [];\nmessages.push({ topic: \"/SliderControl\", payload: \"0\" });\n\nreturn [messages];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 360,
+        "wires": [
+            [
+                "aff04777c6cf4968",
+                "ae7ed675c712cbba"
+            ]
+        ]
+    },
+    {
+        "id": "f4c96a2cc37aacd7",
+        "type": "function",
+        "z": "4e3d1b6f6afd87a1",
+        "name": "Set Slider",
+        "func": "let messages = [];\nmessages.push({ topic: \"/SliderControl\", payload: \"8\" });\n\nreturn [messages];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 280,
+        "wires": [
+            [
+                "aff04777c6cf4968",
+                "ae7ed675c712cbba"
+            ]
+        ]
+    },
+    {
+        "id": "fdc2d542f9288f4a",
+        "type": "function",
+        "z": "4e3d1b6f6afd87a1",
+        "name": "Reset slider if PB ALL OFF",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 1120,
+        "wires": [
+            [
+                "ae7ed675c712cbba"
+            ]
+        ]
+    },
+    {
+        "id": "f36441f8d81d0b34",
+        "type": "ui_spacer",
+        "z": "4e3d1b6f6afd87a1",
+        "name": "spacer",
+        "group": "2c7361bb3cce86c5",
+        "order": 3,
+        "width": 1,
+        "height": 1
     },
     {
         "id": "7a8ea489af191eb8",
@@ -630,7 +703,7 @@
     {
         "id": "2c7361bb3cce86c5",
         "type": "ui_group",
-        "name": "LED Slider",
+        "name": "LED Control Option",
         "tab": "851f28bf5102a4c1",
         "order": 3,
         "disp": true,
@@ -643,6 +716,7 @@
         "type": "ui_tab",
         "name": "LED",
         "icon": "dashboard",
+        "order": 2,
         "disabled": false,
         "hidden": false
     }
