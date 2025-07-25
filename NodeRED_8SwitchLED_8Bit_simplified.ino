@@ -14,8 +14,8 @@ PubSubClient client(espClient);
 
 uint8_t leds[]={15,2,4,16,17,5,18,19};
 
-const char* ssid       = "JHChua@unifi";
-const char* password   = "adamdanial123";
+const char* ssid       = "YOUR_SSID";
+const char* password   = "YOUR_PASSWORD";
 const char* mqtt_server= "broker.emqx.io";
 
 //=========================================== WiFi & MQTT SETUP BEGIN ===========================================
@@ -58,7 +58,7 @@ void reconnect()
   { Serial.println("Attempting MQTT connection...");
     if(client.connect("ESPClient"))
     { Serial.println("Connected");
-      client.subscribe("/LedControl");
+      client.subscribe("aim/LedControl");
     }
     else
     { sprintf(tx2buf,"Failed, rc=%d  try again in 5 seconds",client.state());
