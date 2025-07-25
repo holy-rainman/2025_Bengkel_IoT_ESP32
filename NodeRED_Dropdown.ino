@@ -84,9 +84,9 @@ void reconnect()
   { Serial.println("Attempting MQTT connection...");
     if(client.connect("ESPClient"))
     { Serial.println("Connected");
-      client.subscribe("/LedControl");
-      client.subscribe("/SliderControl");
-      client.subscribe("/MenuControl");
+      client.subscribe("aim/LedControl");
+      client.subscribe("aim/SliderControl");
+      client.subscribe("aim/MenuControl");
     }
     else
     { sprintf(tx2buf,"Failed, rc=%d  try again in 5 seconds",client.state());
@@ -117,15 +117,15 @@ void loop()
   client.loop();
 
   if(pb1==0)  
-  { client.publish("/Button1Status","Button 1 pressed");
+  { client.publish("aim/Button1Status","Button 1 pressed");
     while(pb1==0);
     delay(200);
   }
   if(pb2==1)  
-  { client.publish("/Button2Status","Button 2 pressed");
+  { client.publish("aim/Button2Status","Button 2 pressed");
     while(pb2==1);
     delay(200);
   }
-  if(pb1==1)  client.publish("/Button1Status","Button 1 idle");
-  if(pb2==0)  client.publish("/Button2Status","Button 2 idle");
+  if(pb1==1)  client.publish("aim/Button1Status","Button 1 idle");
+  if(pb2==0)  client.publish("aim/Button2Status","Button 2 idle");
 }
