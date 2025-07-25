@@ -64,7 +64,7 @@ void reconnect()
   { Serial.println("Attempting MQTT connection...");
     if(client.connect("ESPClient")) 
     { Serial.println("Connected");
-      client.subscribe("/LedControl");
+      client.subscribe("aim/LedControl");
     } 
     else 
     { sprintf(tx2buf,"Failed, rc=%s  try again in 5 seconds",client.state());
