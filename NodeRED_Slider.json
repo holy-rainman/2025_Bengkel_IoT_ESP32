@@ -1,6 +1,6 @@
 [
     {
-        "id": "4e3d1b6f6afd87a1",
+        "id": "6f6b24d807406d71",
         "type": "tab",
         "label": "LED Control 8-bit",
         "disabled": false,
@@ -8,19 +8,19 @@
         "env": []
     },
     {
-        "id": "7f2f6bee855cba22",
+        "id": "77c86d1c59098270",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 1",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 3,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led1_1",
@@ -33,20 +33,20 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 380,
+        "x": 410,
+        "y": 160,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "aff04777c6cf4968",
+        "id": "42e90e94c86e0a37",
         "type": "mqtt out",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -54,25 +54,25 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "acd8922375aaedc6",
-        "x": 1150,
-        "y": 460,
+        "broker": "36f133f197891493",
+        "x": 740,
+        "y": 160,
         "wires": []
     },
     {
-        "id": "7b6dae1ce4526007",
+        "id": "e862c2cb1cce5859",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 2",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 4,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led2_1",
@@ -85,28 +85,28 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 440,
+        "x": 410,
+        "y": 220,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "01573bce5c1f8927",
+        "id": "53c8a4f93d8955cb",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 3",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 5,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led3_1",
@@ -119,28 +119,28 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 500,
+        "x": 410,
+        "y": 280,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "11e8814b5736c623",
+        "id": "7c2f3fe006615d1c",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 4",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 6,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led4_1",
@@ -153,28 +153,28 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 560,
+        "x": 410,
+        "y": 340,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "774f232566bdf8eb",
+        "id": "2f737e058c2d892e",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 5",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 7,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led5_1",
@@ -187,28 +187,28 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 620,
+        "x": 410,
+        "y": 400,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "f20333d8cec62528",
+        "id": "f59bd701d95b61ba",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 6",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 8,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led6_1",
@@ -221,28 +221,28 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 680,
+        "x": 410,
+        "y": 460,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "4efee83e3e6b62d8",
+        "id": "78c0e0e3fa15bb24",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 7",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 9,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led7_1",
@@ -255,28 +255,28 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 740,
+        "x": 410,
+        "y": 520,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "3dac7b231ed0ab9e",
+        "id": "23dcacc43fd02f52",
         "type": "ui_switch",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED 8",
         "tooltip": "",
-        "group": "7a8ea489af191eb8",
-        "order": 10,
+        "group": "a1155c0f447b5739",
+        "order": 0,
         "width": 0,
         "height": 0,
         "passthru": false,
         "decouple": "true",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
         "style": "",
         "onvalue": "led8_1",
@@ -289,21 +289,21 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 710,
-        "y": 800,
+        "x": 410,
+        "y": 580,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "b1ead007714a8076",
+        "id": "7b57ebc87af8863e",
         "type": "ui_button",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
-        "group": "7a8ea489af191eb8",
-        "order": 2,
+        "group": "a1155c0f447b5739",
+        "order": 8,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -315,157 +315,71 @@
         "icon": "",
         "payload": "all_off",
         "payloadType": "str",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
-        "x": 720,
-        "y": 320,
+        "x": 420,
+        "y": 120,
         "wires": [
             [
-                "e8c6238dc13309c3",
-                "66290c2e41e5c81b"
+                "45141622817ab566"
             ]
         ]
     },
     {
-        "id": "e8c6238dc13309c3",
+        "id": "45141622817ab566",
         "type": "function",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "All OFF",
-        "func": "let messages = [];\n\nfor (let i = 1; i <= 8; i++) {\n    messages.push({ topic: \"/LedControl\", payload: \"led\" + i + \"_0\" });\n}\n\nreturn [messages];",
+        "func": "let messages = [];\n\nfor(let i=0;i<=8;i++)\n{   messages.push({topic: \"aim/LedControl\", payload:\"led\" + i + \"_0\"});\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
-        "y": 320,
+        "x": 560,
+        "y": 120,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "86700fd05f344882",
+        "id": "1cc8ce70017a803c",
         "type": "mqtt in",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "acd8922375aaedc6",
+        "broker": "7ff75b70f72fceeb",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 470,
-        "y": 480,
+        "x": 180,
+        "y": 160,
         "wires": [
             [
-                "7f2f6bee855cba22",
-                "7b6dae1ce4526007",
-                "01573bce5c1f8927",
-                "11e8814b5736c623",
-                "774f232566bdf8eb",
-                "f20333d8cec62528",
-                "4efee83e3e6b62d8",
-                "3dac7b231ed0ab9e",
-                "0b7d90e433a10f24"
+                "77c86d1c59098270",
+                "e862c2cb1cce5859",
+                "53c8a4f93d8955cb",
+                "7c2f3fe006615d1c",
+                "2f737e058c2d892e",
+                "f59bd701d95b61ba",
+                "78c0e0e3fa15bb24",
+                "23dcacc43fd02f52"
             ]
         ]
     },
     {
-        "id": "fa3a83d56c6a2304",
-        "type": "mqtt in",
-        "z": "4e3d1b6f6afd87a1",
-        "name": "",
-        "topic": "/Button1Status",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "acd8922375aaedc6",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 460,
-        "y": 920,
-        "wires": [
-            [
-                "5041f12193b94911"
-            ]
-        ]
-    },
-    {
-        "id": "5041f12193b94911",
-        "type": "ui_text",
-        "z": "4e3d1b6f6afd87a1",
-        "group": "13f09cef26df5309",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "PB1",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 710,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "55f64369066362f5",
-        "type": "mqtt in",
-        "z": "4e3d1b6f6afd87a1",
-        "name": "",
-        "topic": "/Button2Status",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "acd8922375aaedc6",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 460,
-        "y": 980,
-        "wires": [
-            [
-                "a732354622426829"
-            ]
-        ]
-    },
-    {
-        "id": "a732354622426829",
-        "type": "ui_text",
-        "z": "4e3d1b6f6afd87a1",
-        "group": "13f09cef26df5309",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "PB2",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 710,
-        "y": 980,
-        "wires": []
-    },
-    {
-        "id": "d19a1ff6b371dd4f",
+        "id": "080ab58e35873750",
         "type": "ui_button",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
-        "group": "7a8ea489af191eb8",
-        "order": 1,
+        "group": "a1155c0f447b5739",
+        "order": 8,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -477,89 +391,154 @@
         "icon": "",
         "payload": "all_on",
         "payloadType": "str",
-        "topic": "/LedControl",
+        "topic": "aim/LedControl",
         "topicType": "msg",
-        "x": 710,
-        "y": 240,
+        "x": 410,
+        "y": 80,
         "wires": [
             [
-                "6585ec2a25ed2aef",
-                "f4c96a2cc37aacd7"
+                "662ae3f62be37ab7"
             ]
         ]
     },
     {
-        "id": "6585ec2a25ed2aef",
+        "id": "662ae3f62be37ab7",
         "type": "function",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "All ON",
-        "func": "let messages = [];\n\nfor (let i = 1; i <= 8; i++) {\n    messages.push({ topic: \"/LedControl\", payload: \"led\" + i + \"_1\" });\n}\n\nreturn [messages];",
+        "func": "let messages = [];\n\nfor(let i=0;i<=8;i++)\n{   messages.push({topic: \"aim/LedControl\", payload:\"led\" + i + \"_1\"});\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 870,
-        "y": 240,
+        "x": 550,
+        "y": 80,
         "wires": [
             [
-                "aff04777c6cf4968"
+                "42e90e94c86e0a37"
             ]
         ]
     },
     {
-        "id": "0b7d90e433a10f24",
+        "id": "e9b5ac0b34a8506a",
+        "type": "mqtt in",
+        "z": "6f6b24d807406d71",
+        "name": "",
+        "topic": "aim/Button1Status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "7ff75b70f72fceeb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 750,
+        "y": 280,
+        "wires": [
+            [
+                "291bbaadc501741d"
+            ]
+        ]
+    },
+    {
+        "id": "291bbaadc501741d",
+        "type": "ui_text",
+        "z": "6f6b24d807406d71",
+        "group": "56d7a623dbcc98b4",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "PB1",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 950,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "53ea4907e48a5fee",
+        "type": "mqtt in",
+        "z": "6f6b24d807406d71",
+        "name": "",
+        "topic": "aim/Button2Status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "7ff75b70f72fceeb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 750,
+        "y": 340,
+        "wires": [
+            [
+                "584e9c614c8a3e6c"
+            ]
+        ]
+    },
+    {
+        "id": "584e9c614c8a3e6c",
+        "type": "ui_text",
+        "z": "6f6b24d807406d71",
+        "group": "56d7a623dbcc98b4",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "PB2",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 950,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "18ba365c2605c1b3",
         "type": "ui_slider",
-        "z": "4e3d1b6f6afd87a1",
+        "z": "6f6b24d807406d71",
         "name": "",
         "label": "LED Slider",
         "tooltip": "",
-        "group": "2c7361bb3cce86c5",
-        "order": 1,
+        "group": "775fe98dd2b0316a",
+        "order": 0,
         "width": 0,
         "height": 0,
-        "passthru": false,
+        "passthru": true,
         "outs": "all",
-        "topic": "/SliderControl",
+        "topic": "aim/SliderControl",
         "topicType": "msg",
         "min": 0,
         "max": "8",
         "step": 1,
         "className": "",
-        "x": 470,
-        "y": 1060,
+        "x": 730,
+        "y": 440,
         "wires": [
             [
-                "b29e97f97f7ac859",
-                "fdc2d542f9288f4a"
+                "b329291f3fd18145",
+                "6a70b97f41a3fe0c"
             ]
         ]
     },
     {
-        "id": "b29e97f97f7ac859",
-        "type": "mqtt out",
-        "z": "4e3d1b6f6afd87a1",
-        "name": "",
-        "topic": "/SliderControl",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "acd8922375aaedc6",
-        "x": 740,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "ae7ed675c712cbba",
+        "id": "6a70b97f41a3fe0c",
         "type": "ui_text",
-        "z": "4e3d1b6f6afd87a1",
-        "group": "2c7361bb3cce86c5",
-        "order": 2,
+        "z": "6f6b24d807406d71",
+        "group": "775fe98dd2b0316a",
+        "order": 1,
         "width": 0,
         "height": 0,
         "name": "",
@@ -571,87 +550,33 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1070,
-        "y": 1120,
+        "x": 950,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "66290c2e41e5c81b",
-        "type": "function",
-        "z": "4e3d1b6f6afd87a1",
-        "name": "Reset Slider",
-        "func": "let messages = [];\nmessages.push({ topic: \"/SliderControl\", payload: \"0\" });\n\nreturn [messages];",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 890,
-        "y": 360,
-        "wires": [
-            [
-                "aff04777c6cf4968",
-                "ae7ed675c712cbba"
-            ]
-        ]
+        "id": "b329291f3fd18145",
+        "type": "mqtt out",
+        "z": "6f6b24d807406d71",
+        "name": "",
+        "topic": "aim/SliderControl",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7ff75b70f72fceeb",
+        "x": 970,
+        "y": 440,
+        "wires": []
     },
     {
-        "id": "f4c96a2cc37aacd7",
-        "type": "function",
-        "z": "4e3d1b6f6afd87a1",
-        "name": "Set Slider",
-        "func": "let messages = [];\nmessages.push({ topic: \"/SliderControl\", payload: \"8\" });\n\nreturn [messages];",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 880,
-        "y": 280,
-        "wires": [
-            [
-                "aff04777c6cf4968",
-                "ae7ed675c712cbba"
-            ]
-        ]
-    },
-    {
-        "id": "fdc2d542f9288f4a",
-        "type": "function",
-        "z": "4e3d1b6f6afd87a1",
-        "name": "Reset slider if PB ALL OFF",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 700,
-        "y": 1120,
-        "wires": [
-            [
-                "ae7ed675c712cbba"
-            ]
-        ]
-    },
-    {
-        "id": "f36441f8d81d0b34",
-        "type": "ui_spacer",
-        "z": "4e3d1b6f6afd87a1",
-        "name": "spacer",
-        "group": "2c7361bb3cce86c5",
-        "order": 3,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "7a8ea489af191eb8",
+        "id": "a1155c0f447b5739",
         "type": "ui_group",
         "name": "LED Control 8-bit",
-        "tab": "851f28bf5102a4c1",
+        "tab": "9dae409018d8907b",
         "order": 1,
         "disp": true,
         "width": 6,
@@ -659,7 +584,7 @@
         "className": ""
     },
     {
-        "id": "acd8922375aaedc6",
+        "id": "36f133f197891493",
         "type": "mqtt-broker",
         "name": "broker.emqx.io",
         "broker": "broker.emqx.io",
@@ -690,21 +615,52 @@
         "sessionExpiry": ""
     },
     {
-        "id": "13f09cef26df5309",
+        "id": "7ff75b70f72fceeb",
+        "type": "mqtt-broker",
+        "name": "broker.emqx.io",
+        "broker": "broker.emqx.io",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "56d7a623dbcc98b4",
         "type": "ui_group",
-        "name": "Push Button Status",
-        "tab": "851f28bf5102a4c1",
+        "name": "PB Status",
+        "tab": "9dae409018d8907b",
         "order": 2,
         "disp": true,
-        "width": "5",
+        "width": 6,
         "collapse": false,
         "className": ""
     },
     {
-        "id": "2c7361bb3cce86c5",
+        "id": "775fe98dd2b0316a",
         "type": "ui_group",
-        "name": "LED Control Option",
-        "tab": "851f28bf5102a4c1",
+        "name": "LED Slider",
+        "tab": "9dae409018d8907b",
         "order": 3,
         "disp": true,
         "width": 6,
@@ -712,11 +668,10 @@
         "className": ""
     },
     {
-        "id": "851f28bf5102a4c1",
+        "id": "9dae409018d8907b",
         "type": "ui_tab",
         "name": "LED",
         "icon": "dashboard",
-        "order": 2,
         "disabled": false,
         "hidden": false
     }
