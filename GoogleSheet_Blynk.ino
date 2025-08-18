@@ -231,9 +231,9 @@ void setup()
   Serial.begin(9600);
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
   timer.setInterval(200,kelip);
-  timer.setInterval(10,getADC);
+  timer.setInterval(1000,getADC);
   timer.setInterval(3000,getDHT11);
-  timer.setInterval(10,sendGoogleSheet);
+  timer.setInterval(1000,sendGoogleSheet);
 
   //============================== Google Sheet
   configTime(0, 0, ntpServer);
